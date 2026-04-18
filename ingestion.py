@@ -13,3 +13,8 @@ from langchain_tavily import TavilyCrawl, TavilyExtract, TavilyMap
 
 from logger import (log_info, log_success, log_error, log_warning, log_header, Colors)
 load_dotenv()  # Load environment variables from .env file
+
+# Configure SSL context to use certifi certificates
+ssl_context = ssl.create_default_context(cafile=certifi.where())
+os.environ["SSL_CERT_FILE"] = certifi.where()
+os.environ["REQUESTS_CA_BUNDLE"] = certifi.where()
